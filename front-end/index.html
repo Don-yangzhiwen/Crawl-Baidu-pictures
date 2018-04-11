@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <input type="text" placeholder="请输入百度图片关键字" id="keyword" name="keyword">
+  <input type="number" id="num" placeholder="默认30条">
+  <input type="submit" value="提交" id="btn-tj">
+  <script src="https://cdn.bootcss.com/jquery/1.10.0/jquery.min.js"></script>
+  <script>
+    $('#btn-tj').click(function () {
+      if (!$('#keyword').val().trim()) {
+        alert('请输入关键字');
+        return false;
+      };
+      $.get('http://127.0.0.1:3000/search', {
+        keyword: $('#keyword').val(),
+        num: $('#num').val(),
+      }, function (res) {
+        // console.log(res);
+        alert(res.message);
+      });
+    });
+  </script>
+</body>
+
+</html>
